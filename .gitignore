@@ -365,4 +365,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Cadena de conexion
-*Conexion.json
+*/Conexion.json
