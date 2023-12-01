@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Hamburguesas.Areas.Admin.Models.ViewModels.AdminMenuViewModel>
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<section class="menu2">
+    @foreach (var Clasificacion in Model)
+    {
+        <h1>@Clasificacion.NombreClasificacion</h1>
+        foreach (var Hamburguesa in Clasificacion.Hamburguesas)
+        {
+
+            <div>
+                <img src="~/hamburguesas/@(Hamburguesa.Id).png" />
+                <h1>@(Hamburguesa.Name)</h1>
+                @if (Hamburguesa.PrecioDescuento != 0)
+                {
+                    <h2>
+                        <del>@(Hamburguesa.Precio.ToString("c"))</del>
+                        <br />@(Hamburguesa.PrecioDescuento.ToString("c"))
+                    </h2>
+                }
+                else
+                {
+                    <h2>@(Hamburguesa.Precio.ToString("c"))</h2>
+                }
+                <p>
+                    @Hamburguesa.Descripcion
+                </p>
+
+                <span class="acciones">
+                    <a href="~/admin/editar/@(Hamburguesa.Name.Replace(" ","-"))">Editar</a>
+                    <a href="~/admin/eliminar/@(Hamburguesa.Name.Replace(" ","-"))">Eliminar</a>
+                    @if (Hamburguesa.PrecioDescuento != 0)
+                    {
+                        <a href="~/admin/quitarpromocion/@(Hamburguesa.Name.Replace(" ","-"))">Quitar promoción</a>
+                    }
+                    else
+                    {
+                        <a href="~/admin/promocion/@(Hamburguesa.Name.Replace(" ","-"))">Agregar promoción</a>
+                    }
+
+                </span>
+            </div>
+        }
+    }
+    <a class="fab" href="~/admin/menu/agregar">+</a>
+</section>

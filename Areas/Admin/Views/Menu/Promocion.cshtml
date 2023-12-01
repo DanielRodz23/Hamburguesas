@@ -1,0 +1,30 @@
+﻿@model Hamburguesas.Areas.Admin.Models.ViewModels.PromocionViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Promocion";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<form method="post" action="~/admin/menu/promocion">
+    <h1>Agregar un descuento de promoción</h1>
+
+    <span>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required readonly asp-for="Nombre">
+    </span>
+    <span>
+        <label for="precio">Precio real:</label>
+        <input type="text" id="precio" required readonly asp-for="Precio">
+    </span>
+    <span>
+        <label for="promocion">Precio promoción:</label>
+        <input type="text" id="promocion" required asp-for="PrecioPromo">
+    </span>
+    <span class="error">@Html.ValidationSummary()</span>
+
+    <div class="botones">
+        <input type="submit" value="Agregar" />
+        <a href="~/admin/menu/menu">
+            <input type="button" value="Cancelar" />
+        </a>
+    </div>
+</form>

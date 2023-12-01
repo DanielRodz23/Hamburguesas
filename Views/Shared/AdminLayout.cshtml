@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "AdminLayout";
+}
+<html>
+<head>
+    <link href="~/estilos.css" rel="stylesheet" />
+    <title>Administrador Neat Burguer</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="~/admin/">Principal</a>
+            <a href="~/admin/menu/menu">Modificar menú</a>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿@model Hamburguesas.Models.ViewModels.PromocionViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Promociones";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<section class="menu1">
+    <img src="~/hamburguesas/@(Model.Seleccionada.Id).png" />
+    <div class="datos">
+        <h3>
+            <del>@(Model.Seleccionada.Precio.ToString("c"))</del>
+            <b>@(Model.Seleccionada.PrecioDescuento.ToString("c"))</b>
+        </h3>
+        <h2>@(Model.Seleccionada.Nombre.ToUpper())</h2>
+        <p>@(Model.Seleccionada.Descripcion)</p>
+    </div>
+    <span>
+        <a href="~/promociones/@(Model.NameAnterior)">&lt;</a>
+        <a href="~/promociones/@(Model.NameSiguiente)">&gt;</a>
+    </span>
+</section>

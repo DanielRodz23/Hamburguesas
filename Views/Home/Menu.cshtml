@@ -1,0 +1,31 @@
+﻿@model Hamburguesas.Models.ViewModels.MenuViewModel
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<section class="menu3">
+
+    <div>
+        <h1>NUESTRO MENÚ</h1>
+        @foreach (var item in Model.ListaClasifs)
+        {
+            <h3>@(item.Nombre)</h3>
+            @foreach (var Hambu in item.Hamburguesas)
+            {
+                if (Model.HamburguesaSeleccionada.Id == Hambu.Id)
+                {
+                    <h2 class="seleccionado"><a href="~/menu/@(Hambu.Nombre.Replace(" ", "-"))"><span>@Hambu.Nombre</span><span class="price">@Hambu.Precio.ToString("c")</span></a></h2>
+                }
+                else
+                {
+                    <h2><a href="~/menu/@(Hambu.Nombre.Replace(" ", "-"))"><span>@Hambu.Nombre</span><span class="price">@Hambu.Precio.ToString("c")</span></a></h2>
+                }
+            }
+        }
+    </div>
+    <div>
+        <img src="~/hamburguesas/@(Model.HamburguesaSeleccionada.Id).png"/>
+        <p>@Model.HamburguesaSeleccionada.Descripcion</p>
+    </div>
+</section>
